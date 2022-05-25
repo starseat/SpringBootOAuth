@@ -1,0 +1,33 @@
+server:
+  port: 8081
+spring:
+#  h2:
+#    console:
+#      enabled: true
+#      settings:
+#        web-allow-others: true
+#  datasource:
+##    url: jdbc:h2:tcp://localhost/~/test
+#    url: jdbc:h2:~/test
+#    driver-class-name: org.h2.Driver
+#    username: sa
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://localhost:3306/oauthdb
+    username: oauth_user
+    password: oauth_pw
+  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect  # JAP ?????? ??? ??
+#    properties:hibernate.hbm2ddl.auto: update
+    hibernate:
+      ddl-auto: create  # SessionFactory ???? ?? ??? ?? ? ?? ??
+    properties:
+      hibernate:
+        showSql: true
+        format_sql: true
+
+security:
+  oauth2:
+    jwt:
+      signkey: testjwt!@34
